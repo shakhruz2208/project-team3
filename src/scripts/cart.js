@@ -6,9 +6,7 @@ async function displayCart() {
 
     try {
         const cartRaw = localStorage.getItem('cart');
-        
         cart = cartRaw ? JSON.parse(cartRaw) : [];
-        
         if (!Array.isArray(cart)) {
             cart = [cart]; 
         }
@@ -35,21 +33,24 @@ async function displayCart() {
         );
 
         const products = await Promise.all(fetchPromise);
-
         const validProducts = products.filter(item => item !== null);
 
         const mappedCartPr = validProducts.map((item) => {
             return `
-                <div class='w-full border border-gray-200 bg-white h-32 rounded-3xl p-3 flex items-center gap-4 mb-4 shadow-sm text-left'>
-                    <img src="${item.thumbnail}" alt="${item.title}" class="h-full w-24 object-contain rounded-2xl bg-gray-50"/>
-                    <div class="flex flex-col justify-between h-full py-1 flex-1">
+                <div class='w-full border border-gray-200 bg-white h-auto sm:h-32 rounded-3xl p-4 flex flex-col sm:flex-row items-center gap-4 mb-4 shadow-sm text-center sm:text-left relative sm:static'>
+                    <img src="${item.thumbnail}" alt="${item.title}" class="h-24 w-24 object-contain rounded-2xl bg-gray-50"/>
+                    
+                    <div class="flex flex-col justify-between flex-1 w-full gap-2 sm:gap-0 sm:h-full py-1">
                         <div>
                             <h3 class="font-bold text-base md:text-lg leading-tight line-clamp-1 text-gray-800">${item.title}</h3>
                             <p class="text-gray-400 text-xs md:text-sm">${item.brand || 'No brand'}</p>
                         </div>
-                        <span class="font-semibold text-green-600">$${item.price}</span>
+                        <span class="font-semibold text-green-600 text-lg">$${item.price}</span>
                     </div>
-                    <button onclick='removeFromCart(${item.id})'> <i class="fa-solid fa-trash-can text-3xl text-red-500 pr-30 "></i></button>
+                    
+                    <button onclick='removeFromCart(${item.id})' class='hover:scale-110 p-2 transition-transform duration-200 mt-2 sm:mt-0'> 
+                        <i class="fa-solid fa-trash-can text-2xl sm:text-3xl text-red-500"></i>
+                    </button>
                 </div>
             `;
         });
@@ -77,9 +78,6 @@ function removeFromCart(id) {
         displayCart()
     } catch (error) {
         console.log(error.message);
-        
     }
-    
-    
 }
 displayCart();
