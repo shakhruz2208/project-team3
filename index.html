@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="src/style/output.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="src/scripts/main.js" defer></script>
 </head>
 <body>
-    <div class="w-full h-auto">
-        <header class="w-full h-17 pl-15 bg-white flex items-center text-black gap-70 fixed shadow-lg shadow-black z-50">
+    <div class="bigContainer w-full h-auto relative z-20 ">
+        <header class="w-full h-17 pl-15 bg-white flex items-center text-black gap-70 fixed shadow-lg shadow-black z-30">
             <div>
                 <h1 class="font-bold text-3xl font-serif cursor-pointer">SHOP.CO</h1>
             </div>
@@ -21,8 +23,8 @@
                 <a class="hover:underline" href="/#contact">Contact</a>
             </div>
             <div class="flex items-center gap-5">
-                <button class="border p-1 font-semibold cursor-pointer rounded-2xl hover:shadow-md transition-all duration-200 ease-in-out hover:shadow-black">Admin Panel</button>
-                <img class="hover:scale-105" src="/src/img/cart.png" alt="">
+                <button class="admin border p-1 pl-2 pr-2 font-semibold cursor-pointer rounded-2xl hover:shadow-md transition-all duration-200 ease-in-out hover:shadow-black">Admin Panel</button>
+                <a href="cart.html"><img class="hover:scale-105" src="/src/img/cart.png" alt=""></a>
             </div>
         </header>
 
@@ -32,7 +34,8 @@
                  THAT MATCHES <br> YOUR STYLE</h1>
                  <p class=" pl-5">Browse through our diverse range of meticulously crafted garments, designed <br>
                      to bring out your individuality and cater to your sense of style.</p>
-                     <button class="font-semibold max-w-40 rounded-2xl ml-5 bg-black text-white hover:bg-transparent hover:text-black transition-all ease-in-out duration-200 cursor-pointer pt-2 pb-2 pl-5 pr-5 border">Shop now</button>
+
+                     <a href="shop.html" class="inline-block text-center font-semibold max-w-40 rounded-2xl ml-5 bg-black text-white hover:bg-transparent hover:text-black transition-all ease-in-out duration-200 cursor-pointer pt-2 pb-2 pl-5 pr-5 border">Shop now</a>
 
                      <div class="pl-5 flex gap-10">
                         <div>
@@ -59,16 +62,34 @@
             <img class="w-30 h-15" src="/src/img/zara-logo-1 1.png" alt="">
             <img class="w-30 h-15" src="/src/img/gucci-logo-1 1.png" alt="">
             <img class="w-30 h-15" src="/src/img/prada-logo-1 1.png" alt="">
-            <img class="w-40 h-15" src="/src/img/Group (1).png" alt="">
+            <img class="w-50 h-15" src="/src/img/Group (1).png" alt="">
         </div>
-        <div id="newArrivals" class=" w-full h-screen bg-green-500">
-            he
+        <div id="newArrivals" class=" w-full h-screen border-b">
+            <h1 class="font-bold text-6xl pt-15 text-center">New Arrivals</h1>
+            <div class="newProducts flex justify-center items-center gap-10 pt-20">
+
+            </div>
+                <div class="text-center pt-6">
+                     <a class="inline-block p-2 pl-4 pr-4 rounded-3xl border hover:shadow-md hover:shadow-black transition-all duration-200 ease-in-out " href="shop.html">View All</a>
+                </div>
         </div>
-        <div id="topSelling" class=" w-full h-screen bg-green-500">
-            he
+        <div id="topSelling" class=" w-full h-220 bg-white p-15 ">
+            <div class="w-full h-192 rounded-3xl bg-[#F0F0F0]">
+                <h1 class="font-bold text-4xl p-10 text-center">
+                    BROWSE BY DRESS STYLE
+                </h1>
+                <div class="flex gap-5 ml-15">
+                    <img src="/src/img/Frame 61.png" alt="">
+                    <img src="/src/img/Frame 62.png" alt="">
+                </div>
+                <div class="flex ml-15 gap-5 mt-5 ">
+                    <img src="/src/img/Frame 64.png" alt="" >
+                    <img src="/src/img/Frame 63.png" alt="" >
+                </div>
+            </div>
         </div>
-        <div id="contact" class=" w-full h-screen bg-green-500">
-            he
+        <div id="contact" class=" w-full h-screen bg-white">
+            
         </div>
     </div>
 </body>
