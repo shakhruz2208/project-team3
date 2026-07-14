@@ -655,11 +655,16 @@
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
   }
+  .text-balance {
+    text-wrap: balance;
+  }
   .text-black {
     color: var(--color-black);
   }
   .text-emerald-600 {
     color: var(--color-emerald-600);
+  .text-gray-50 {
+    color: var(--color-gray-50);
   }
   .text-gray-400 {
     color: var(--color-gray-400);
