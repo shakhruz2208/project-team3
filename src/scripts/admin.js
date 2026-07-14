@@ -368,4 +368,37 @@ function addNewProduct(title, price, imageSrc) {
     localStorage.setItem('addedProducts', JSON.stringify(addedProducts));
 }
 
-    
+    function initSearchBar() {
+    const container = document.querySelector('.adminProducts');
+    if (!container || document.getElementById('product-search-input')) return;
+
+    const searchWrapper = document.createElement('div');
+    searchWrapper.className = 'w-full mb-4';
+    searchWrapper.innerHTML = `
+        <input id="product-search-input" type="text" placeholder="Enter the Product Name" 
+            class="w-full h-12 px-4 rounded-xl border border-gray-300 focus:outline-none focus:border-emerald-500 text-base" />
+    `;
+    container.parentNode.insertBefore(searchWrapper, container);
+
+    document.getElementById('product-search-input').addEventListener('input', function (e) {
+        searchProducts(e.target.value);
+    });
+}
+
+function searchProducts(query) {
+    const q = query.trim().toLowerCase();
+
+    const filtered = q === ''
+        ? productsList
+        : productsList.filter(item => item.title.toLowerCase().includes(q));
+
+    const originalList = productsList;
+    productsList = filtered;
+    renderProducts();
+    productsList = originalList;
+}
+
+document.addEventListener('DOMContentLoaded', initSearchBar);
+if (document.readyState !== 'loading') {
+    initSearchBar();
+}

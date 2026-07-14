@@ -1,143 +1,3 @@
-<!-- <!DOCTYPE html>
-<html class="scroll-smooth" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="src/style/output.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./src/scripts/main.js" defer></script>
-</head>
-<body>
-    <div class="bigContainer w-full h-auto relative z-20">
-        <header class="w-full min-h-17 py-4 md:py-0 px-4 md:pl-15 bg-white flex flex-wrap md:flex-nowrap items-center text-black justify-between md:justify-start md:gap-70 fixed shadow-lg shadow-black/10 z-30">
-            <div>
-                <h1 class="font-bold text-2xl md:text-3xl font-serif cursor-pointer">SHOP.CO</h1>
-            </div>
-
-            <div class="flex items-center text-sm md:text-xl gap-4 md:gap-10 order-3 w-full md:w-auto justify-center mt-2 md:mt-0 md:order-none">
-                <a class="hover:underline" href="/#home">Home</a>
-                <a class="hover:underline" href="/#newArrivals">New Arrivals</a>
-                <a class="hover:underline" href="/#topSelling">Top</a>
-                <a class="hover:underline" href="/#contact">Contact</a>
-            </div>
-            
-            <div class="flex items-center gap-3 md:gap-5">
-                <button class="admin border p-1 pl-2 pr-2 text-xs md:text-base font-semibold cursor-pointer rounded-2xl hover:shadow-md transition-all duration-200 ease-in-out hover:shadow-black">Admin Panel</button>
-                <a href="cart.html"><img class="hover:scale-105 w-6 h-6 md:w-auto md:h-auto" src="/src/img/cart.png" alt=""></a>
-            </div>
-        </header>
-
-        <div id="home" class="max-w-full min-h-screen bg-[#F2F0F1] p-6 md:p-10 pt-24 md:pt-10 flex flex-col md:flex-row gap-10 md:gap-15 items-center">
-            <div class="pt-6 md:pt-20 flex flex-col gap-4 w-full md:w-1/2 text-center md:text-left">
-                <h1 class="font-bold text-4xl sm:text-5xl lg:text-7xl font-serif leading-tight">FIND CLOTHES <br class="hidden sm:inline"> THAT MATCHES <br class="hidden sm:inline"> YOUR STYLE</h1>
-                <p class="px-2 md:pl-5 text-sm md:text-base text-gray-600">Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.</p>
-
-                <a href="shop.html" class="inline-block text-center font-semibold max-w-40 rounded-2xl mx-auto md:ml-5 bg-black text-white hover:bg-transparent hover:text-black transition-all ease-in-out duration-200 cursor-pointer pt-2 pb-2 pl-5 pr-5 border">Shop now</a>
-
-                <div class="px-2 md:pl-5 flex flex-wrap justify-center md:justify-start gap-6 md:gap-10 mt-4">
-                    <div>
-                        <h1 class="text-black font-bold text-3xl md:text-5xl">200+</h1>
-                        <p class="text-xs md:text-sm text-gray-500">International Brands</p>
-                    </div>
-                    <div>
-                        <h1 class="text-black font-bold text-3xl md:text-5xl">2,000+</h1>
-                        <p class="text-xs md:text-sm text-gray-500">High-Quality Products</p>
-                    </div>
-                    <div>
-                        <h1 class="text-black font-bold text-3xl md:text-5xl">30,000+</h1>
-                        <p class="text-xs md:text-sm text-gray-500">Happy Customers</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="w-full md:w-1/2 flex justify-center">
-                <img class="w-full max-w-xs sm:max-w-sm md:max-w-md lg:w-100" src="/src/img/pexels-renzylaurel-9370856-removebg-preview.png" alt="">
-            </div>
-        </div>
-
-        <div class="w-full min-h-40 bg-black flex flex-wrap justify-center items-center gap-6 p-6 md:p-0 md:gap-30">
-            <img class="w-28 sm:w-40 h-auto object-contain" src="/src/img/Group.png" alt="">
-            <img class="w-20 sm:w-30 h-auto object-contain" src="/src/img/zara-logo-1 1.png" alt="">
-            <img class="w-20 sm:w-30 h-auto object-contain" src="/src/img/gucci-logo-1 1.png" alt="">
-            <img class="w-20 sm:w-30 h-auto object-contain" src="/src/img/prada-logo-1 1.png" alt="">
-            <img class="w-36 sm:w-50 h-auto object-contain" src="/src/img/Group (1).png" alt="">
-        </div>
-
-        <div id="newArrivals" class="w-full min-h-screen border-b pb-12">
-            <h1 class="font-bold text-4xl md:text-6xl pt-15 text-center">New Arrivals</h1>
-            <div class="newProducts flex flex-wrap justify-center items-center gap-6 md:gap-10 pt-12 md:pt-20 px-4">
-            </div>
-            <div class="text-center pt-8">
-                 <a class="inline-block p-2 pl-4 pr-4 rounded-3xl border hover:shadow-md hover:shadow-black transition-all duration-200 ease-in-out" href="shop.html">View All</a>
-            </div>
-        </div>
-
-        <div id="topSelling" class="w-full h-auto bg-white p-4 md:p-15">
-            <div class="w-full h-auto rounded-3xl bg-[#F0F0F0] p-6 md:p-10 pb-12">
-                <h1 class="font-bold text-2xl md:text-4xl mb-6 md:mb-10 text-center">
-                    BROWSE BY DRESS STYLE
-                </h1>
-                <div class="flex flex-col md:flex-row gap-5 justify-center items-center">
-                    <img class="w-full md:w-auto max-w-full h-auto object-contain" src="/src/img/Frame 61.png" alt="">
-                    <img class="w-full md:w-auto max-w-full h-auto object-contain" src="/src/img/Frame 62.png" alt="">
-                </div>
-                <div class="flex flex-col md:flex-row gap-5 mt-5 justify-center items-center">
-                    <img class="w-full md:w-auto max-w-full h-auto object-contain" src="/src/img/Frame 64.png" alt="">
-                    <img class="w-full md:w-auto max-w-full h-auto object-contain" src="/src/img/Frame 63.png" alt="">
-                </div>
-            </div>
-        </div>
-        
-        <div id="contact" class="w-full h-screen bg-white">
-            
-
-        <div class="bg-black rounded-3xl text-white p-5 flex gap-70">
-            <p class="text-4xl">STAY UPTO DATE ABOUT <BR>
-            OUR LATEST OFFERS</BR></p>
-            <div>
-            <P class="border-2 p-2 rounded-2xl bg-white  text-gray-50">Enter your email address</P>
-            <p class="border-2 p-2 rounded-2xl text-black bg-white" > Subscribe to Newsletter</p>
-            </div>
-        </div>
-        </div>
-        <div>
-            <h1>Shop.Co</h1>
-            <p>We have clothes that situtates your styles and <br>
-            which you're proud to wear.From <br>
-        women to men.</p>
-        <div>
-            <h1>Company</h1>
-            <p>About</p>
-            <p>Features</p>
-            <p>Works</p>
-            <p>Career</p>
-        </div>
-        <div>
-            <h1>Help</h1>
-            <p>Customer Support</p>
-            <p>Delivery Details</p>
-            <p>Terms & Conditions</p>
-            <p>Privacy Policy</p>
-        </div>
-        <div>
-            <h1>FAQ</h1>
-            <p>Account</p>
-            <p>MAnage Delivers</p>
-            <p>Orders</p>
-            <p>Payments</p>
-        </div>
-        </div>
-    </div>
-    </div>
-</body>
-</html> -->
-
-
-
-
-
 
 
 <!DOCTYPE html>
@@ -175,43 +35,52 @@
                 </a>
             </div>
         </header>
-
-        <div id="home" class="max-w-full min-h-screen bg-[#F2F0F1] px-6 md:px-16 pt-28 pb-12 flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+<div id="home" class="max-w-full h-screen bg-[#F2F0F1] px-6 md:px-16 flex flex-col md:flex-row items-center overflow-hidden relative">
             
-            <div class="flex flex-col gap-6 w-full md:w-1/2 text-center md:text-left justify-center">
-                <h1 class="font-bold text-3xl sm:text-5xl lg:text-6xl font-serif leading-tight text-black">
-                    FIND CLOTHES <br class="hidden sm:inline"> THAT MATCHES <br class="hidden sm:inline"> YOUR STYLE
-                </h1>
-                <p class="text-sm md:text-base text-gray-600 max-w-lg mx-auto md:mx-0">
-                    Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.
-                </p>
+    <div class="flex flex-col gap-5 w-full md:w-1/2 text-center md:text-left justify-center z-10 py-12">
+        <h1 class="font-bold text-3xl sm:text-5xl lg:text-6xl font-serif leading-tight text-black">
+            FIND CLOTHES <br class="hidden sm:inline"> THAT MATCH <br class="hidden sm:inline"> YOUR STYLE
+        </h1>
+        <p class="text-sm md:text-base text-gray-600 max-w-lg mx-auto md:mx-0">
+            Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.
+        </p>
 
-                <div class="w-full flex justify-center md:justify-start mt-2">
-                    <a href="shop.html" class="inline-block text-center font-semibold bg-black text-white hover:bg-transparent hover:text-black border-2 border-black rounded-full py-3 px-12 transition-all ease-in-out duration-300 cursor-pointer text-sm md:text-base shadow-sm hover:shadow-lg">
-                        Shop Now
-                    </a>
-                </div>
+        <div class="w-full flex justify-center md:justify-start mt-2">
+            <a href="shop.html" class="inline-block text-center font-semibold bg-black text-white hover:bg-transparent hover:text-black border-2 border-black rounded-full py-3 px-12 transition-all ease-in-out duration-300 cursor-pointer text-sm md:text-base shadow-sm hover:shadow-lg">
+                Shop Now
+            </a>
+        </div>
 
-                <div class="flex flex-wrap justify-center md:justify-start gap-8 md:gap-12 mt-6">
-                    <div>
-                        <h1 class="text-black font-bold text-2xl md:text-4xl">200+</h1>
-                        <p class="text-xs text-gray-500">International Brands</p>
-                    </div>
-                    <div class="border-l border-gray-300 pl-6 md:pl-8">
-                        <h1 class="text-black font-bold text-2xl md:text-4xl">2,000+</h1>
-                        <p class="text-xs text-gray-500">High-Quality Products</p>
-                    </div>
-                    <div class="border-l border-gray-300 pl-6 md:pl-8">
-                        <h1 class="text-black font-bold text-2xl md:text-4xl">30,000+</h1>
-                        <p class="text-xs text-gray-500">Happy Customers</p>
-                    </div>
-                </div>
+        <div class="flex flex-wrap justify-center md:justify-start gap-8 md:gap-12 mt-6">
+            <div>
+                <h1 class="text-black font-bold text-2xl md:text-4xl">200+</h1>
+                <p class="text-xs text-gray-500">International Brands</p>
             </div>
-
-            <div class="w-full md:w-1/2 flex justify-center items-center">
-                <img class="w-full max-w-sm md:max-w-md lg:max-w-lg object-contain hover:scale-105 transition duration-500" src="/src/img/pexels-renzylaurel-9370856-removebg-preview.png" alt="Hero Image" onerror="this.src='https://images.pexels.com/photos/9370856/pexels-photo-9370856.jpeg?auto=compress&cs=tinysrgb&w=600'">
+            <div class="border-l border-gray-300 pl-6 md:pl-8">
+                <h1 class="text-black font-bold text-2xl md:text-4xl">2,000+</h1>
+                <p class="text-xs text-gray-500">High-Quality Products</p>
+            </div>
+            <div class="border-l border-gray-300 pl-6 md:pl-8">
+                <h1 class="text-black font-bold text-2xl md:text-4xl">30,000+</h1>
+                <p class="text-xs text-gray-500">Happy Customers</p>
             </div>
         </div>
+    </div>
+
+    <div class="w-full md:w-1/2 flex justify-center items-end h-full md:absolute md:bottom-0 md:right-0 z-0">
+        
+        <svg class="absolute top-16 right-4 md:right-16 w-12 h-12 md:w-20 text-black animate-pulse hidden sm:block" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/>
+        </svg>
+
+        <svg class="absolute bottom-1/2 left-4 md:-left-10 w-8 h-8 md:w-12 text-black animate-pulse hidden sm:block" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/>
+        </svg>
+
+        <img class="w-auto h-auto max-h-[70%] md:max-h-[85%] lg:max-h-[90%] object-contain object-bottom" src="/src/img/pexels-renzylaurel-9370856-removebg-preview.png" alt="Hero Image" onerror="this.src='https://pexels.com'">
+    </div>
+</div>
+
 
         <div class="w-full py-8 bg-black flex flex-wrap justify-center items-center gap-8 md:gap-16 px-6">
             <img class="w-20 sm:w-28 h-auto object-contain brightness-0 invert" src="/src/img/Group.png" alt="Brand" onerror="this.style.display='none'">
@@ -296,4 +165,4 @@
 
     </div>
 </body>
-</html>
+</html> 
