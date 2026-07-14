@@ -368,3 +368,4 @@ function addNewProduct(title, price, imageSrc) {
     localStorage.setItem('addedProducts', JSON.stringify(addedProducts));
 }
 
+    
