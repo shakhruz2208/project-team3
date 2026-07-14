@@ -1,77 +1,86 @@
-async function fetchProducts() {
+
+async function fetchShopProducts() {
     try {
-        const res = await fetch('https://dummyjson.com/products')
-        const data = await res.json()
-        if (!data?.products) return;
-
-        const mappedPr = data.products.map((item) => {
-            const imgPr = item.images && item.images.length > 0
-                ? `<div class='w-full sm:w-64 h-64 rounded-2xl bg-[#F0EEED] flex justify-center items-center overflow-hidden'>
-                    <img class='w-full h-full object-contain' src='${item.images[0]}' alt='${item.title}' />
-                </div>` 
-                : 'Mahsulot rasmi mavjud emas';
-
-            return `<div class='w-full sm:w-64 flex flex-col gap-2 p-2'>
-                ${imgPr}
-                <h1 class='text-lg sm:text-xl font-semibold line-clamp-1'>${item.title.length > 25 ? item.title.slice(0 , 25) + '...' : item.title}</h1>
-                <div class='flex justify-between items-center gap-4 mt-1'>
-                    <div>
-                        <h1 class='text-sm text-gray-500'>Rating: ${item.rating}</h1>
-                        <h1 class='font-bold text-lg'>$${item.price}</h1>
-                    </div>
-                    <button data-id="${item.id}" class='cartClicked hover:scale-110 p-2 transition-transform duration-200'>
-                        <i class="fa-solid fa-cart-plus text-black text-2xl"></i>
-                    </button>
-                </div>
-            </div>`
-        }).join('')
+        const res = await fetch('https://dummyjson.com/products');
+        const data = await res.json();
         
-        document.querySelector('.allProducts').innerHTML = mappedPr
-        setCartButtons()
+        let apiProducts = data?.products || [];
+        
+        let deletedIds = [];
+        let editedProducts = {};
+        let addedProducts = []; 
+        
+        try {
+            deletedIds = JSON.parse(localStorage.getItem('deletedProducts')) || [];
+            editedProducts = JSON.parse(localStorage.getItem('editedProducts')) || {};
+            addedProducts = JSON.parse(localStorage.getItem('addedProducts')) || [];
+        } catch (e) {
+            deletedIds = [];
+            editedProducts = {};
+            addedProducts = [];
+        }
+
+        
+        const allProducts = [...addedProducts, ...apiProducts];
+
+        
+        const activeProducts = allProducts.filter(item => {
+            return !deletedIds.includes(item.id) && !deletedIds.includes(String(item.id));
+        });
+
+        const mappedPr = activeProducts.map((item) => {
+        
+            const currentItem = editedProducts[item.id] || editedProducts[String(item.id)] || item;
+            
+            
+            const productImg = (currentItem.images && currentItem.images[0]) || currentItem.thumbnail;
+
+            const imgPr = productImg
+                ? `<div class='w-64 h-64 rounded-2xl bg-[#F0EEED] flex items-center justify-center overflow-hidden'>
+                    <img class='w-full h-full object-cover' src='${productImg}' alt='${currentItem.title}' />
+                </div>` 
+                : `<div class='w-64 h-64 rounded-2xl bg-[#F0EEED] flex items-center justify-center text-gray-400'>No Image</div>`;
+
+            return `<div id='product-${currentItem.id}' class='w-64 flex flex-col gap-2 relative'>
+                ${imgPr}
+                <h1 class='text-xl font-semibold product-title' style='margin-top: 8px;'>
+                    ${currentItem.title.length > 25 ? currentItem.title.slice(0, 25) + '...' : currentItem.title}
+                </h1>
+                <div class='flex justify-between items-end w-full' style='margin-top: 4px;'>
+                    <div>
+                        <h1 class='product-rating text-sm text-gray-600'>Rating: ${currentItem.rating || 0}</h1>
+                        <h1 class='font-bold product-price text-lg' style='margin-top: 2px;'>$${currentItem.price}</h1>
+                    </div>
+                    <div>
+                        <button onclick='addToCart(${currentItem.id})' class='focus:outline-none bg-transparent text-black p-2 hover:opacity-70 transition-opacity flex items-center justify-center'> 
+                            <i class="fa-solid fa-cart-plus text-3xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>`;
+        }).join('');
+        
+        const container = document.querySelector('.shopProducts') || 
+                          document.querySelector('.products') || 
+                          document.querySelector('.adminProducts') ||
+                          document.querySelector('[class*="Products"]') || 
+                          document.getElementById('products-container');
+                          
+        if (container) {
+            container.innerHTML = mappedPr;
+        } else {
+            const newDiv = document.createElement('div');
+            newDiv.className = 'shopProducts flex flex-wrap gap-6';
+            newDiv.innerHTML = mappedPr;
+            document.body.appendChild(newDiv);
+        }
     } catch (error) {
-        console.log(error.message);
+        console.error("Shop xatolik yuz berdi:", error.message);
     }
 }
 
-fetchProducts()
+fetchShopProducts();
 
-function setCartButtons() {
-    const cartButtons = document.querySelectorAll('.cartClicked');
-    
-    cartButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const productId = Number(button.getAttribute('data-id'));
-            let cart = JSON.parse(localStorage.getItem('cart')) || []
-            
-            if (!cart.includes(productId)) {
-                cart.push(productId)
-                localStorage.setItem('cart', JSON.stringify(cart))
-
-                Swal.mixin({
-                    toast: true,
-                    position: "top-end", 
-                    showConfirmButton: false, 
-                    timer: 2000, 
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.onmouseenter = Swal.stopTimer;
-                        toast.onmouseleave = Swal.resumeTimer;
-                    }
-                }).fire({
-                    icon: "success",
-                    title: "Product added to Cart!" 
-                });
-            } else {
-                Swal.mixin({
-                    toast: true,
-                    position: "top-end", 
-                    showConfirmButton: false, 
-                    timer: 2000,
-                }).fire({
-                    icon: "info",
-                    title: "This product is already in your Cart!" 
-                });
-            }
-        });
-    });
-}
+window.addEventListener('storage', () => {
+    fetchShopProducts();
+});
